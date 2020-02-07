@@ -1,6 +1,6 @@
 #!/bin/bash
 
-web="a96aa264a49de11eaa6a80266d00d191-1055180525.us-west-2.elb.amazonaws.com:80"
+web="aac49c1e049e011eaa48d0632224e248-2023074296.us-west-2.elb.amazonaws.com:80"
 
 if curl -s "$web" | grep blue &> /dev/null
 then  
