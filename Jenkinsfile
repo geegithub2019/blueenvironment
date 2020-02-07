@@ -19,16 +19,16 @@ pipeline {
     stage('Compile') {
 //Compile the docker image
       steps {
-        sh './blue/run_docker.sh '
+        sh './run_docker.sh '
       }
     }
     stage('Building image') {
 //Building the docker image for dockerhub
       steps{
         script {
-          dir('./blue/') {
+         // dir('./blue/') {
             dockerImage = docker.build registry + ":latest" 
-          }
+         // }
         }   
       }
     }
@@ -56,7 +56,7 @@ pipeline {
         sshagent(['kops-mackine']) {
           script{
             dir('./blue') {
-              sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-44-229-83-223.us-west-2.compute.amazonaws.com sudo kubectl apply -f $workspace/blue/replicationcontroller.yml"
+              sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-44-229-83-223.us-west-2.compute.amazonaws.com sudo kubectl apply -f $workspacex/replicationcontroller.yml"
             }
           }
         }
